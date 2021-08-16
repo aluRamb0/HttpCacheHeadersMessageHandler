@@ -32,3 +32,5 @@ services.AddHttpClient<MyHttpClient>()
 ```
 
 Then you are good to go!
+
+*Note:* the back-end needs to already support http cache headers for this handler to work
