@@ -7,6 +7,12 @@ Delegating message handler for Http Client that caches responses using a distrib
 
 This message handler is responsible for caching ONLY on the client side. Please check [HttpCacheHeaders](https://github.com/KevinDockx/HttpCacheHeaders) for easy to use middleware for supporting cache headers on the server side. The sample in this repo uses this middlware and the tests reference some of the code from there.
 
+# Installation (NuGet)
+
+```
+Install-Package Http.Cache.Headers.MessageHandler
+```
+
 # Usage
 First, register the services with ASP.NET Core's dependency injection container (in the ConfigureServices method on the Startup class)
 
