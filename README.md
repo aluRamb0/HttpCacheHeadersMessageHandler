@@ -1,5 +1,5 @@
 # Http Cache Headers Message Handler for Http Client
-Delegating message handler for Http Client that caches responses using a distributed cache. The handler caches a response in the following way:
+Delegating message handler for Http Client that caches responses using a distributed cache. This handler will cache responses in the following way:
 
 1. Cheks the response headers for `ETag`, and creates a cache entry for that request path
 2. The next time the same path is requested, it checks if there is a cache entry and appends the `Etag` to the request headers
