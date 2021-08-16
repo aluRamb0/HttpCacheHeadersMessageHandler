@@ -7,7 +7,7 @@ using Marvin.Cache.Headers;
 using Marvin.Cache.Headers.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Cache.Headers.Delegating.Handler.Sample.Controllers
+namespace Http.Cache.Headers.MessageHandler.Sample.Controllers
 {
     
     /// <see href="https://github.com/KevinDockx/HttpCacheHeaders/blob/7c7f0fe94b70e4273f0a8011c8daf78adb220c13/sample/Marvin.Cache.Headers.Sample/Controllers/StoreManipulationController.cs"/>

@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Net.Http;
 
-namespace Cache.Headers.DelegatingHandler
+namespace Http.Cache.Headers.MessageHandler
 {
     internal static class CacheEntryExtensions
     {

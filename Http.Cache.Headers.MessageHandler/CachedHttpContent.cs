@@ -5,7 +5,7 @@ using System.Net.Http.Headers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace Cache.Headers.DelegatingHandler
+namespace Http.Cache.Headers.MessageHandler
 {
     public class CachedHttpContent
     {

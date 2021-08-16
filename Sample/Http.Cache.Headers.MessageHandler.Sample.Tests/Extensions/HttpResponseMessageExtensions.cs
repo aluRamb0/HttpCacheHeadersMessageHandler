@@ -1,10 +1,9 @@
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Cache.Headers.Delegating.Handler.Sample.Tests.Setup;
-using Cache.Headers.DelegatingHandler;
+using Http.Cache.Headers.MessageHandler.Sample.Tests.Setup;
 
-namespace Cache.Headers.Delegating.Handler.Sample.Tests.Extensions
+namespace Http.Cache.Headers.MessageHandler.Sample.Tests.Extensions
 {
 
     internal static class HttpResponseMessageExtensions

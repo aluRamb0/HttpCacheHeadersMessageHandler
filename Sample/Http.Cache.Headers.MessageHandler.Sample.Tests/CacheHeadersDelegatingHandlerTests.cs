@@ -1,15 +1,14 @@
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using Cache.Headers.Delegating.Handler.Sample.Tests.Extensions;
-using Cache.Headers.Delegating.Handler.Sample.Tests.Setup;
-using Cache.Headers.DelegatingHandler;
+using Http.Cache.Headers.MessageHandler.Sample.Tests.Extensions;
+using Http.Cache.Headers.MessageHandler.Sample.Tests.Setup;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Cache.Headers.Delegating.Handler.Sample.Tests
+namespace Http.Cache.Headers.MessageHandler.Sample.Tests
 {
     public class CacheHeadersDelegatingHandlerTests
     {

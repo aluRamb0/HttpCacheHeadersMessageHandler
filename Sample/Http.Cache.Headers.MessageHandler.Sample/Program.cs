@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace Cache.Headers.Delegating.Handler.Sample
+namespace Http.Cache.Headers.MessageHandler.Sample
 {
     public class Program
     {

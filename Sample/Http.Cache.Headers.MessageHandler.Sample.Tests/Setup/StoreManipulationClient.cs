@@ -3,7 +3,7 @@ using System.Net.Http.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Cache.Headers.Delegating.Handler.Sample.Tests.Setup
+namespace Http.Cache.Headers.MessageHandler.Sample.Tests.Setup
 {
     public class StoreManipulationClient
     {

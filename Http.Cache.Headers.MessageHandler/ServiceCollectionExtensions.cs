@@ -3,7 +3,7 @@ using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace Cache.Headers.DelegatingHandler
+namespace Http.Cache.Headers.MessageHandler
 {
     public static class ServiceCollectionExtensions
     {

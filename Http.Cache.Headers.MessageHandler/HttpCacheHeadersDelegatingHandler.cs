@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Logging;
 
-namespace Cache.Headers.DelegatingHandler
+namespace Http.Cache.Headers.MessageHandler
 {
     public class HttpCacheHeadersDelegatingHandler: System.Net.Http.DelegatingHandler
     {

@@ -1,9 +1,8 @@
-using Cache.Headers.Delegating.Handler.Sample.Tests.Setup;
-using Cache.Headers.DelegatingHandler;
+using Http.Cache.Headers.MessageHandler.Sample.Tests.Setup;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Cache.Headers.Delegating.Handler.Sample.Tests.Extensions
+namespace Http.Cache.Headers.MessageHandler.Sample.Tests.Extensions
 {
     public static class WebApplicationFactoryExtensions
     {

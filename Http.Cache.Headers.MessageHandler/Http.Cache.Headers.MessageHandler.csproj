@@ -3,6 +3,12 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
         <LangVersion>latest</LangVersion>
+        <PackageVersion>1.0.0-beta</PackageVersion>
+        <Title>Http Cache Headers Message Handler</Title>
+        <Description>Delegating message handler for Http Client that caches responses using a distributed cache</Description>
+        <PackageProjectUrl>https://github.com/aluRamb0/HttpCacheHeadersMessageHandler</PackageProjectUrl>
+        <PackageReleaseNotes>Beta version</PackageReleaseNotes>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
     <ItemGroup>

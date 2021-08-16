@@ -1,9 +1,8 @@
-using Cache.Headers.DelegatingHandler;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Cache.Headers.Delegating.Handler.Sample.Tests.Setup
+namespace Http.Cache.Headers.MessageHandler.Sample.Tests.Setup
 {
     public class CustomWebApplicationFactory<TStartup> : WebApplicationFactory<TStartup> where TStartup: class
     {

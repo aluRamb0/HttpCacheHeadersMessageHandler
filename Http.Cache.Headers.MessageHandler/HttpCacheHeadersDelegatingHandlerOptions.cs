@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace Cache.Headers.DelegatingHandler
+namespace Http.Cache.Headers.MessageHandler
 {
     public class HttpCacheHeadersDelegatingHandlerOptions
     {

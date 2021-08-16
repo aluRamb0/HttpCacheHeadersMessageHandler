@@ -1,9 +1,8 @@
 using System.Threading.Tasks;
-using Cache.Headers.DelegatingHandler;
 using Microsoft.Extensions.Caching.Distributed;
 using Newtonsoft.Json.Linq;
 
-namespace Cache.Headers.Delegating.Handler.Sample.Tests.Extensions
+namespace Http.Cache.Headers.MessageHandler.Sample.Tests.Extensions
 {
     internal static class DistributedCacheExtensions
     {

@@ -4,6 +4,8 @@
         <TargetFramework>net5.0</TargetFramework>
 
         <IsPackable>false</IsPackable>
+
+        <RootNamespace>Http.Cache.Headers.MessageHandler.Sample.Tests</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -21,8 +23,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Cache.Headers.DelegatingHandler\Cache.Headers.DelegatingHandler.csproj" />
-      <ProjectReference Include="..\Cache.Headers.Delegating.Handler.Sample\Cache.Headers.Delegating.Handler.Sample.csproj" />
+      <ProjectReference Include="..\..\Http.Cache.Headers.MessageHandler\Http.Cache.Headers.MessageHandler.csproj" />
+      <ProjectReference Include="..\Http.Cache.Headers.MessageHandler.Sample\Http.Cache.Headers.MessageHandler.Sample.csproj" />
     </ItemGroup>
 
 </Project>

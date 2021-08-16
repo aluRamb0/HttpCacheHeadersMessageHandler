@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
-namespace Cache.Headers.Delegating.Handler.Sample
+namespace Http.Cache.Headers.MessageHandler.Sample
 {
     public class Startup
     {
