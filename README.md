@@ -5,6 +5,8 @@ Delegating message handler for Http Client that caches responses using a distrib
 2. The next time the same path is requested, it checks if there is a cache entry and appends the `Etag` to the request headers
 3. If the server responds with `NotModified` status code, the response content is replaced with the cache entry
 
+This message handler is responsible for caching ONLY on the client side. Please check [HttpCacheHeaders](https://github.com/KevinDockx/HttpCacheHeaders) for easy to use middleware for supporting cache headers on the server side. The sample in this repo uses this middlware and the tests reference some of the code from there.
+
 # Usage
 First, register the services with ASP.NET Core's dependency injection container (in the ConfigureServices method on the Startup class)
 
