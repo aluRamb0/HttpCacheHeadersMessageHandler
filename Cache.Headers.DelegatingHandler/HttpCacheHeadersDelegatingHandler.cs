@@ -51,6 +51,7 @@ namespace Cache.Headers.DelegatingHandler
             {
                 _logger.LogInformation("Setting \"If-Match\" header from cached entry");
                 request.Headers.IfNoneMatch.Add(EntityTagHeaderValue.Parse(etag));
+                request.Headers.IfModifiedSince = cachedEntry.ToHttpContent().Headers.LastModified;
             }
 
             var response = await base.SendAsync(request, cancellationToken);
@@ -58,6 +59,8 @@ namespace Cache.Headers.DelegatingHandler
             //return from cache if status code is NotModified
             if (response.SetFromCacheIfNotModified(cachedEntry))
             {
+                //set headers
+                
                 _logger.LogInformation("Server status code was NotModified, cached entry will be used");
                 return response;
             }
@@ -65,7 +68,7 @@ namespace Cache.Headers.DelegatingHandler
             //else set new cache entry
             if (await response.GetCacheEntryAsync(cancellationToken) is not { } modifiedEntry)
             {
-                _logger.LogDebug("Could not cache response with ETag: {Etag}", response.Headers.ETag);
+                _logger.LogDebug("Could not cache response with headers: {Etag}", response.Headers);
                 return response;
             }
 
