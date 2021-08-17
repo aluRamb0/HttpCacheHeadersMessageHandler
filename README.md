@@ -1,11 +1,11 @@
 # Http Cache Headers Message Handler for Http Client
 Delegating message handler for Http Client that caches responses using a distributed cache. This handler will cache responses in the following way:
 
-1. Cheks the response headers for `ETag`, and creates a cache entry for that request path
-2. The next time the same path is requested, it checks if there is a cache entry and appends the `Etag` to the request headers
-3. If the server responds with `NotModified` status code, the response content is replaced with the cache entry
+1. Cheks the response for `Cache-Control` headers, and creates a cache entry for that request path.
+2. The next time the same path is requested, it checks if there is a cache entry and appends the `Cache-Control` headers to the request.
+3. If the server responds with `NotModified` status code, the response content is replaced with the cached entry.
 
-This message handler is responsible for caching ONLY on the client side. Please check [HttpCacheHeaders](https://github.com/KevinDockx/HttpCacheHeaders) for easy to use middleware for supporting cache headers on the server side. The sample in this repo uses this middlware and the tests reference some of the code from there.
+This message handler is responsible for caching ONLY on the client side. Please check [HttpCacheHeaders](https://github.com/KevinDockx/HttpCacheHeaders), an easy to use middleware for supporting cache headers on the server side. The sample in this repo uses this middleware and the tests reference some of the code from there.
 
 # Installation (NuGet)
 
@@ -39,4 +39,4 @@ services.AddHttpClient<MyHttpClient>()
 
 Then you are good to go!
 
-*Note:* the back-end needs to already support http cache headers for this handler to work
+*Note: the back-end needs to already support http cache headers for this handler to work*
