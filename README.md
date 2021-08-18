@@ -14,7 +14,7 @@ Install-Package Http.Cache.Headers.MessageHandler
 ```
 
 # Usage
-First, register the services with ASP.NET Core's dependency injection container (in the ConfigureServices method on the Startup class)
+First, register the services with your dependency injection container
 
 ```
 services.AddHttpCacheHeadersMessageHandler(options =>
@@ -30,7 +30,7 @@ You will also need to register a distrubuted cache
 services.AddDistributedMemoryCache();
 ```
 
-Add the messahe handler to your http client as follows
+Add the message handler to your http client as follows
 
 ```
 services.AddHttpClient<MyHttpClient>()
