@@ -8,8 +8,8 @@ namespace Http.Cache.Headers.MessageHandler.Sample.Tests.Extensions
 
     internal static class HttpResponseMessageExtensions
     {
-        internal static string GetCacheKey(this HttpResponseMessage response) =>
-            string.Format($"{Constants.CacheEntryPrefix}:{response.RequestMessage.RequestUri}");
+        internal static string GetCacheKey(this HttpResponseMessage response, params string[] headerNameExclusions) =>
+            string.Format($"{Constants.CacheEntryPrefix}:{response.RequestMessage.GetRequestKey(headerNameExclusions)}").ToSha256();
         
         
         internal static async Task<CachedHttpContent> GetHttpContent(this HttpResponseMessage response)

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using Marvin.Cache.Headers;
 using Marvin.Cache.Headers.Interfaces;
@@ -30,26 +29,20 @@ namespace Http.Cache.Headers.MessageHandler.Sample.Controllers
         }
  
         [HttpGet] 
-        public IEnumerable<string> Get()
+        public async Task<IEnumerable<string>> Get()
         {
-            //assume some work
-            Thread.Sleep(100);
             return new[] { "value1", "value2" };
         }
          
         [HttpGet("{id}")] 
         public async Task<string> Get(int id)
         {
-            //assume some work
-            Thread.Sleep(100);
             return "value";
         } 
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] string value)
         {
-            //assume lots of work
-            Thread.Sleep(100);
             
             // remove all items matching part of a resource path
 

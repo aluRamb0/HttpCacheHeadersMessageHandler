@@ -3,11 +3,11 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
         <LangVersion>latest</LangVersion>
-        <PackageVersion>1.0.0-beta</PackageVersion>
+        <PackageVersion>1.0.1-beta-1</PackageVersion>
         <Title>Http Cache Headers Message Handler</Title>
         <Description>Delegating message handler for Http Client that caches responses using a distributed cache</Description>
         <PackageProjectUrl>https://github.com/aluRamb0/HttpCacheHeadersMessageHandler</PackageProjectUrl>
-        <PackageReleaseNotes>Beta version</PackageReleaseNotes>
+        <PackageReleaseNotes>Cache entry key is now generated from a combination of the request path and headers. Header exclussion can be configure in the options when registering the dependencies</PackageReleaseNotes>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 

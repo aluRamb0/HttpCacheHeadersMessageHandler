@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Http.Cache.Headers.MessageHandler.Sample.Tests.Extensions;
 using Http.Cache.Headers.MessageHandler.Sample.Tests.Setup;
@@ -72,7 +73,6 @@ namespace Http.Cache.Headers.MessageHandler.Sample.Tests
             postCacheTimer.Stop();
             _testOutputHelper.WriteLine("Post Cache: {0} (ms)", postCacheTimer.ElapsedMilliseconds);
 
-            
             Assert.Equal(responseA.Content.Headers.LastModified, responseB.Content.Headers.LastModified);
             
             Assert.Equal(contentA.Entry, contentB.Entry);
@@ -86,7 +86,7 @@ namespace Http.Cache.Headers.MessageHandler.Sample.Tests
 
 
         [Fact]
-        public async Task Etag_Is_Invalidated_On_Not_Get_Routes()
+        public async Task Etag_Is_Not_Sent_For_Non_Get_Routes()
         {
             
             using var factory = new CustomWebApplicationFactory<Startup>();
@@ -111,7 +111,48 @@ namespace Http.Cache.Headers.MessageHandler.Sample.Tests
             var responseC = await client.GetAllAsync();
             Assert.NotNull(responseC.Headers.CacheControl);
             
+        }
+       
+        [Theory]
+        [InlineData("x-test-header")]
+        public async Task Cache_Key_Varies_By_Headers(string headerName)
+        {
+            
+            using var factory = new CustomWebApplicationFactory<Startup>();
+            var client = factory.CreateClientWithDelegatingHandler();
+            var distributedCache = factory.Services.GetRequiredService<IDistributedCache>();
+            //cache is empty
+            var responseA = await client.GetAllAsync();
+            
+            //assert that cache is not empty
+            var cacheKeyA = responseA.GetCacheKey();
 
+            var request = new HttpRequestMessage(HttpMethod.Get, "api/storemanipulation");
+            request.Headers.Add(headerName, Guid.NewGuid().ToString());
+            var responseB = await client.SendAsync(request);
+            var cacheKeyB = responseB.GetCacheKey();
+            
+            Assert.NotEqual(cacheKeyB, cacheKeyA);
+        }
+        
+        [Fact]
+        public async Task Can_Exclude_Header_When_Generating_CacheKey()
+        {
+            using var factory = new CustomWebApplicationFactory<Startup>();
+            var client = factory.CreateClientWithDelegatingHandler();
+            //cache is empty
+            var responseA = await client.GetAllAsync();
+            
+            //assert that cache is not empty
+            var cacheKeyA = responseA.GetCacheKey();
+
+            var request = new HttpRequestMessage(HttpMethod.Get, "api/storemanipulation");
+            request.Headers.Add(Constants.CustomHeader, Guid.NewGuid().ToString());
+            
+            var responseB = await client.SendAsync(request);
+
+            var cacheKeyB = responseB.GetCacheKey(Constants.CustomHeader);
+            Assert.Equal(cacheKeyB, cacheKeyA);
         }
     }
 }

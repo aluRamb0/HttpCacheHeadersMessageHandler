@@ -31,7 +31,7 @@ namespace Http.Cache.Headers.MessageHandler
         
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            if (request.RequestUri?.AbsoluteUri is not { } path)
+            if (request.RequestUri?.AbsoluteUri  == null)
             {
                 _logger.LogInformation("Ignoring caching for request with null RequestUri");
                 return await base.SendAsync(request, cancellationToken);
@@ -39,19 +39,19 @@ namespace Http.Cache.Headers.MessageHandler
 
             if (_options.IgnoreNonGetRequest && request.Method != HttpMethod.Get)
             {
-                _logger.LogInformation("HttpCacheHeadersDelegatingHandlerOptions.IgnoreNonGetRequest = true, ignoring caching for {Method} {Path}", request.Method.Method, path);
+                _logger.LogInformation("HttpCacheHeadersDelegatingHandlerOptions.IgnoreNonGetRequest = true, ignoring caching for {Method} {Path}", request.Method.Method, request.RequestUri);
                 return await base.SendAsync(request, cancellationToken);
             }
 
-            var key = string.Format(_cacheKeyFormat, path);
+            var key = string.Format(_cacheKeyFormat, request.GetRequestKey(_options.CacheKeyHeaderNameExclusions));
 
-            var cachedEntry = await _distributedCache.GetCacheEntryAsync(key, cancellationToken);
+            var cachedEntry = await _distributedCache.GetCacheEntryAsync(key.ToSha256(), cancellationToken);
             
             if (cachedEntry?.Etag is { } etag)
             {
                 _logger.LogInformation("Setting \"If-Match\" header from cached entry");
                 request.Headers.IfNoneMatch.Add(EntityTagHeaderValue.Parse(etag));
-                request.Headers.IfModifiedSince = cachedEntry.ToHttpContent().Headers.LastModified;
+               // request.Headers.IfModifiedSince = cachedEntry.ToHttpContent().Headers.LastModified;
             }
 
             var response = await base.SendAsync(request, cancellationToken);
@@ -74,8 +74,8 @@ namespace Http.Cache.Headers.MessageHandler
 
             //read from the response headers
             var cacheOptions = response.GetCacheOptions();
-            
-            await _distributedCache.SetCacheEntryAsync(key, modifiedEntry, cacheOptions, cancellationToken);
+            _logger.LogDebug("Setting cache key: {cacheKey}", key);
+            await _distributedCache.SetCacheEntryAsync(key.ToSha256(), modifiedEntry, cacheOptions, cancellationToken);
             
             return response;
         }

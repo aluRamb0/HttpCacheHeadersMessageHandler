@@ -7,6 +7,8 @@ namespace Http.Cache.Headers.MessageHandler
     {
 
         private string _cacheEntryPrefix;
+
+        private const string CacheEntryPrefixRegex = "(\\w*\\d*)+";
         
         /// <summary>
         /// Use this to ignore non GET requests.
@@ -31,6 +33,10 @@ namespace Http.Cache.Headers.MessageHandler
             } 
         }
 
-        private const string CacheEntryPrefixRegex = "(\\w*\\d*)+";
+        /// <summary>
+        /// Use this to set header that should be ignored when generating the cache key
+        /// </summary>
+        /// <remarks>Cache key generation includes headers to be unique</remarks>
+        public string[] CacheKeyHeaderNameExclusions = Array.Empty<string>();
     }
 }
