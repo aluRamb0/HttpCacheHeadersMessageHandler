@@ -34,9 +34,9 @@ namespace Http.Cache.Headers.MessageHandler
         }
 
         /// <summary>
-        /// Use this to set header that should be ignored when generating the cache key
+        /// Use this to set headers that should be ignored when generating the cache key
         /// </summary>
-        /// <remarks>Cache key generation includes headers to be unique</remarks>
-        public string[] CacheKeyHeaderNameExclusions = Array.Empty<string>();
+        /// <see href="https://github.com/aluRamb0/HttpCacheHeadersMessageHandler/blob/main/README.md#header-exclusions"/>
+        public string[] CacheKeyHeaderNameExclusions { get; set; } = Array.Empty<string>();
     }
 }
